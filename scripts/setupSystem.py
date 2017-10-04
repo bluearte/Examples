@@ -8,7 +8,7 @@ from setupReadNodes import setupReadNodes
 
 def setupAutopath():
     readNodes = nuke.allNodes('Read')
-    oldpath = 'C:/PrivateFolder/__dummy_project/__RenderOuputs/maya/ZAQ/RenderOutput/EP0201/SQ09/EP0201_SQ09_SH220/'
+    oldpath = '<render_directory>/'
     new = '[value AutoPath.RenderFile]'
     for readNode in readNodes:
         file = readNode['file'].evaluate()
@@ -23,7 +23,7 @@ def createDirectory():
         
 def setupWriteNode():
     nuke.delete(nuke.toNode('Write2'))
-    writeImport = nuke.scriptReadFile("C:\\PrivateFolder\\_projects\\nuke\\WriteNode.nk")
+    writeImport = nuke.scriptReadFile("<output_directory>\\WriteNode.nk")
     writeNode = nuke.toNode('Write_Img_Sequence')
     writeNode.knob('beforeRender').setValue("try:\n\tcreateDirectory()\nexcept Exception as e:\n\tprint(e)")
     destination = nuke.toNode('Image_Sequence')
