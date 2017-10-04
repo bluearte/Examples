@@ -22,7 +22,7 @@ def createDirectory():
         os.makedirs( trgDir )                                       # create the folder
         
 def setupWriteNode():
-    nuke.delete(nuke.toNode('Write2'))
+    nuke.delete(nuke.toNode('<write_node_name>'))
     writeImport = nuke.scriptReadFile("<output_directory>\\WriteNode.nk")
     writeNode = nuke.toNode('Write_Img_Sequence')
     writeNode.knob('beforeRender').setValue("try:\n\tcreateDirectory()\nexcept Exception as e:\n\tprint(e)")
