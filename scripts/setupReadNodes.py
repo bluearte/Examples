@@ -42,7 +42,8 @@ def getFrameRange(globName):
     
     # Create a loop to obtain all of the sequence name and append it to list
     for name in glob.glob(globName):
-        fileList.append(name)                                           
+        fileList.append(name)
+        fileList.sort()
     
     # Get first and last frame from the list and return it as a value
     firstFrame = int(re.findall(r'\d+', os.path.basename(fileList[0]))[-1])  
@@ -116,7 +117,6 @@ def setupReadNodes():
     """
     This function is to set all the frame range to all Read Nodes
     """
-    
     for readNode in nuke.allNodes('Read'):
         try:
             readFile = readNode['file'].evaluate()                                     
